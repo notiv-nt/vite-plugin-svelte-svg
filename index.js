@@ -54,7 +54,7 @@ module.exports = (props = {}) => {
           if (props?.props) {
            someProps += props?.props;
           }
-          svg = `${head} ${someProps} {...$$props}${body}`;
+          svg = `${head} ${someProps} {...{ ...$$restProps, class: ('${props?.class || ''}') + ' ' + ($$restProps.class || '')  }} ${body}`;
         }
         // Compile with Svelte
         return compileSvg(svg, idWithoutQuery, options?.ssr);
